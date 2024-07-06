@@ -38,7 +38,7 @@ const deleteSingleProductFromDB = async(productId: string) =>
 
 const updateSingleProductFromDB = async(productsId: string, productData: TProduct) =>{
     const id = new Types.ObjectId(productsId);
-    const result = await Products.findByIdAndUpdate(id, { $set: productData }, { new: true , runValidators: true});
+    const result = await Products.findByIdAndUpdate(id, { $set: productData }, { runValidators: true});
     return result;
 }
 
