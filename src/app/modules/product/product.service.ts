@@ -20,14 +20,20 @@ const getSingleProductFromDB = async(productsId: string) =>{
     return result;
 }
 
+const getSingleProductByName = async (name: string) =>{
+    const regex = new RegExp(name, 'i');
+    const result = await Products.find({name: { $regex: regex }});
+    return result;
+}
 
 const deleteSingleProductFromDB = async(productId: string) =>
 {
-    
+
 }
 
 export const ProductServices = {
     createProductInDB,
     getAllProductsFromDB,
-    getSingleProductFromDB
+    getSingleProductFromDB,
+    getSingleProductByName
 }
