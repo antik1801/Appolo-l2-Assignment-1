@@ -11,6 +11,7 @@ export default [
     rules: {
       "no-unused-vars": "error",
       "no-undef": "error",
+      "no-console": ["warn", { "allow": ["warn", "error"] }]
     },
   },
 ];
