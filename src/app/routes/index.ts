@@ -11,4 +11,4 @@ const router = express.Router();
 
 // moduleRoutes.forEach((e) => router.use(e.path, e.route));
 
-export default router;
+// export default router;
