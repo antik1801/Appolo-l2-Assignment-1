@@ -15,7 +15,7 @@ const getAllProductsFromDB = async() =>{
 
 
 const getSingleProductFromDB = async(productsId: string) =>{
-    const result = await Products.findById(productsId).exec();
+    const result = await Products.findOne();
 
     return result;
 }
