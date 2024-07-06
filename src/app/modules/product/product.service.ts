@@ -6,6 +6,14 @@ const createProductInDB = async(productData: TProduct) =>{
     return result
 }
 
+
+const getAllProductsFromDB = async() =>{
+    const result = await Products.find();
+    return result;
+}
+
+
 export const ProductServices = {
-    createProductInDB
+    createProductInDB,
+    getAllProductsFromDB
 }
