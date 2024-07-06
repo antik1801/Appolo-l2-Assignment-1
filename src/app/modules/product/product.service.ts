@@ -1,3 +1,4 @@
+import { ObjectId, Types } from "mongoose"
 import { TProduct } from "./product.interface"
 import { Products } from "./product.model"
 
@@ -13,7 +14,15 @@ const getAllProductsFromDB = async() =>{
 }
 
 
+const getSingleProductFromDB = async(productsId: string) =>{
+    const result = await Products.findById(productsId).exec();
+
+    return result;
+}
+
+
 export const ProductServices = {
     createProductInDB,
-    getAllProductsFromDB
+    getAllProductsFromDB,
+    getSingleProductFromDB
 }
