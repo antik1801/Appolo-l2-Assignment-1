@@ -30,15 +30,17 @@ const getSingleProductByName = async (name: string) =>{
 
 const deleteSingleProductFromDB = async(productId: string) =>
 {
- const id = new Types.ObjectId(productId);
- const result = await Products.findByIdAndDelete({_id: id});
+ const result = await Products.findByIdAndDelete(productId);
  return result;
 
 }
 
 const updateSingleProductFromDB = async(productsId: string, productData: TProduct) =>{
     const id = new Types.ObjectId(productsId);
-    const result = await Products.findByIdAndUpdate(id, { $set: productData }, { runValidators: true});
+    const result = await Products.findByIdAndUpdate(id, { $set: productData }, { runValidators: true, new: true});
+    if (!result) {
+        throw new Error('Product not found');
+    }
     return result;
 }
 

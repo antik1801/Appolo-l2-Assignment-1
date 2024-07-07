@@ -80,7 +80,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
 const deleteSingleProduct = async (req: Request, res: Response) => {
     try {
         const { productId } = req.params;
-        const result = ProductServices.getSingleProductFromDB(productId);
+        const result = await ProductServices.deleteSingleProductFromDB(productId);
         res.status(200).json({
             success: true,
             message: "Single product deleted successfully",
@@ -100,9 +100,9 @@ const deleteSingleProduct = async (req: Request, res: Response) => {
 const updateSingleProductFromDB = async (req:Request, res:Response) =>{
     try {
         const productData = req.body;
-        const {productId} = req.params;
+        const {productsId} = req.params;
         const zodParseData = ProductValidationSchema.parse(productData);
-        const result = await ProductServices.updateSingleProductFromDB(productId, zodParseData);
+        const result = await ProductServices.updateSingleProductFromDB(productsId, zodParseData);
 
         res.status(200).json({
             success: true,
@@ -110,11 +110,25 @@ const updateSingleProductFromDB = async (req:Request, res:Response) =>{
             data: result
         })
     } catch (err:any) {
-        res.status(500).json({
-            success: false,
-            message: "Something went wrong",
-            error: err.message
-        })
+        if (err.name === 'ZodError') {
+            res.status(400).json({
+              success: false,
+              message: "Validation error",
+              error: err.errors
+            });
+          } else if (err.kind === 'ObjectId') {
+            res.status(400).json({
+              success: false,
+              message: "Invalid product ID",
+              error: err.message
+            });
+          } else {
+            res.status(500).json({
+              success: false,
+              message: "Something went wrong",
+              error: err.message
+            });
+          }
     }
 }
 
