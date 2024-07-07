@@ -22,5 +22,9 @@ const OrderSchema = new Schema<TOrder>({
     }
 })
 
+OrderSchema.pre('save',async function (next){
+    console.log(this);
+next();
+})
 
 export const Order = model<TOrder>('Order', OrderSchema)

@@ -31,7 +31,7 @@ const getSingleProductByName = async (name: string) =>{
 const deleteSingleProductFromDB = async(productId: string) =>
 {
  const id = new Types.ObjectId(productId);
- const result = await Products.findByIdAndDelete(id);
+ const result = await Products.findByIdAndDelete({_id: id});
  return result;
 
 }
