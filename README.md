@@ -5,8 +5,115 @@
 # Requirements analysis: 
 
 
+# API ENDPOINTS:
 
+GET / GET ALL PRODUCTS
+```
+https://appolo-l2-assignment-1.vercel.app/api/products
+```
+POST / Create a product api
+```
+http://localhost:5000/api/products
+```
 
+Sample Data:
+```
+   {
+            "name": "Samsung Galaxy S21",
+            "description": "High-performance Android smartphone with advanced camera capabilities.",
+            "price": 799,
+            "category": "Electronics",
+            "tags": ["smartphone", "Samsung", "Android"],
+            "variants": [
+                {
+                    "type": "Color",
+                    "value": "Phantom Black"
+                },
+                {
+                    "type": "Storage Capacity",
+                    "value": "128GB"
+                }
+            ],
+            "inventory": {
+                "quantity": 30,
+                "inStock": true
+            }
+        }
+
+```
+
+POST / Create a Order
+```
+http://localhost:5000/api/orders
+```
+
+Sample Data:
+```
+{
+    "email": "antik.edu@gmail.com",
+    "productId": "UUTH15426",
+    "price": 220,
+    "quantity": 5
+}
+
+```
+
+GET / GET a single product
+```
+http://localhost:5000/api/products/668922a1db521590698b0a19
+```
+
+GET / GET a product by name
+```
+http://localhost:5000/api/products?searchTerm=iphone
+```
+
+DELETE / DELETE a product by ID
+```
+http://localhost:5000/api/products/668922b2db521590698b0a1e
+```
+
+PUT / Update a product by ID
+```
+http://localhost:5000/api/products/668922a1db521590698b0a
+```
+
+Sample Data:
+```
+{
+    "name": "iPhone 13 samsung gallaxy ID",
+    "description": "A sleek and powerful smartphone with cutting-edge features.",
+    "price": 999,
+    "category": "Electronics",
+    "tags": ["smartphone", "Apple", "iOS"],
+    "variants": [
+        {
+            "type": "Color",
+            "value": "Midnight Blue"
+        },
+        {
+            "type": "Storage Capacity",
+            "value": "256GB"
+        }
+    ],
+    "inventory": {
+        "quantity": 50,
+        "inStock": true
+    }
+}
+
+```
+
+GET / GET A Single User order
+```
+http://localhost:5000/api/orders?email=antik.edu@gmail.com
+```
+
+GET / GET ALL ORDERS:
+
+```
+https://appolo-l2-assignment-1.vercel.app/api/products
+```
 
 
 
